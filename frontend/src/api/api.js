@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://campus-hall-backend.onrender.com/api";
 
 export async function loginUser(role, email, password) {
   const response = await fetch(`${BASE_URL}/auth/login`, {
