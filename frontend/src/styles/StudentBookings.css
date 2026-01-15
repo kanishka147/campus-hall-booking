@@ -1,0 +1,92 @@
+.bookings-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.bookings-container {
+  width: 90%;
+  max-width: 900px;
+}
+
+.bookings-title {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.empty-text {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 🔥 PREMIUM CARD */
+.booking-card {
+  background: white;
+  padding: 28px 32px;
+  border-radius: 18px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #4e8df5;
+  transition: 0.2s;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Header row */
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.hall-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  flex-grow: 1;
+  margin-right: 14px;
+}
+
+/* Date & Time */
+.booking-time {
+  font-size: 17px;
+  color: #444;
+  margin-top: 6px;
+}
+
+/* Badges */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status-approved {
+  background: #d4f8d4;
+  color: #118021;
+}
+
+.status-pending {
+  background: #ffe9c2;
+  color: #c07b00;
+}
+
+.status-rejected {
+  background: #ffd5d5;
+  color: #d12525;
+}

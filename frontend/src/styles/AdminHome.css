@@ -1,0 +1,86 @@
+.admin-home-wrapper {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+}
+
+.admin-home-card {
+  background: #ffffff;
+  width: 520px;
+  padding: 45px 40px;
+  border-radius: 20px;
+  box-shadow: 0px 14px 35px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid #ececec;
+}
+
+.admin-home-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.admin-home-name {
+  font-size: 16px;
+  color: #666;
+  margin-top: 6px;
+  margin-bottom: 30px;
+}
+
+/* ACTIONS */
+.admin-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-action-btn {
+  padding: 14px 0;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* Soft Admin Colors */
+.btn-halls {
+  background: #e3f3f2;
+  color: #0f6d6f;
+}
+
+.btn-halls:hover {
+  background: #d0ece9;
+}
+
+.btn-users {
+  background: #e7edff;
+  color: #2b4cb8;
+}
+
+.btn-users:hover {
+  background: #d5e0ff;
+}
+
+.btn-bookings {
+  background: #fff1d6;
+  color: #a06600;
+}
+
+.btn-bookings:hover {
+  background: #ffe6b8;
+}
+
+.btn-logout {
+  background: #ffdcdc;
+  color: #b51f1f;
+}
+
+.btn-logout:hover {
+  background: #ffc8c8;
+}

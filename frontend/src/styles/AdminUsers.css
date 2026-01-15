@@ -1,0 +1,134 @@
+/* PAGE */
+.admin-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 40px 50px;
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ADD USER BUTTON */
+.add-user-btn {
+  text-decoration: none;
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+}
+
+.add-user-btn:hover {
+  background: #1e4fd8;
+}
+
+/* SUCCESS MESSAGE */
+.success-text {
+  color: #16a34a;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* USER CARD */
+.user-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* TOP ROW */
+.user-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* ROLE CHIP */
+.role-chip {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+  color: #2563eb;
+}
+
+/* EMAIL */
+.user-email {
+  font-size: 13px;
+  color: #64748b;
+  margin: 8px 0;
+}
+
+/* META */
+.user-meta {
+  font-size: 14px;
+  color: #334155;
+  margin-top: 4px;
+}
+
+/* ACTIONS */
+.user-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* EDIT */
+.edit-btn {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.edit-btn:hover {
+  background: #f1f5ff;
+}
+
+/* DELETE */
+.delete-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+  background: transparent;
+  color: #dc2626;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #fef2f2;
+}

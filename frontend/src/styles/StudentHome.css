@@ -1,0 +1,93 @@
+/* Full screen background */
+.student-home-wrapper {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Main card */
+.student-home-card {
+  width: 550px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.07);
+  padding: 40px 45px;
+  text-align: center;
+  border: 1px solid #eeeeee;
+}
+
+/* Title + subtitle */
+.student-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.student-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Buttons arranged as large cards */
+.dashboard-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.dashboard-btn {
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+}
+
+/* Blue - Book Hall */
+.book-btn {
+  background: #4a90e2;
+  color: white;
+}
+.book-btn:hover {
+  background: #3c79bd;
+}
+
+/* Orange - My Bookings */
+.booking-btn {
+  background: #e76f51;
+  color: white;
+}
+.booking-btn:hover {
+  background: #c95c40;
+}
+
+/* Teal - Profile */
+.profile-btn {
+  background: #2a9d8f;
+  color: white;
+}
+.profile-btn:hover {
+  background: #248378;
+}
+
+/* Logout button */
+.logout-btn {
+  background: #dadada;
+  color: #333;
+  padding: 14px;
+  font-size: 17px;
+  border-radius: 10px;
+}
+.logout-btn:hover {
+  background: #c4c4c4;
+}

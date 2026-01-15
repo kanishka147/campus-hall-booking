@@ -1,0 +1,10 @@
+@"
+node_modules/
+.env
+/build
+/dist
+.DS_Store
+.vscode/
+frontend/node_modules/
+backend/node_modules/
+"@ | Out-File .gitignore -Encoding utf8

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6fb;
+  font-family: "Inter", sans-serif;
+}
+
+.landing-card {
+  background: white;
+  width: 420px;
+  padding: 48px 42px;
+  border-radius: 18px;
+  box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid #ececec;
+}
+
+.landing-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.landing-subtitle {
+  font-size: 15px;
+  color: #6b6b6b;
+  margin-bottom: 32px;
+}
+
+/* Buttons */
+.login-button {
+  width: 100%;
+  padding: 14px 0;
+  margin: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: 0.22s ease-in-out;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Richer colors (Material tone) */
+.login-student {
+  background: #d8e9ff;
+  color: #0d47a1;
+}
+.login-student:hover {
+  background: #c8dcfa;
+}
+
+.login-faculty {
+  background: #ffe0e3;
+  color: #c62828;
+}
+.login-faculty:hover {
+  background: #f5c5c8;
+}
+
+.login-admin {
+  background: #d8f3ef;
+  color: #00695c;
+}
+.login-admin:hover {
+  background: #c6e7e2;
+}
+
+/* Smooth hover lift */
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Remove underline */
+.landing-card a {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+}

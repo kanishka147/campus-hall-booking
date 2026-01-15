@@ -1,0 +1,25 @@
+.floating-back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+}
+
+.floating-back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.18);
+  background: #f5f7fb;
+}

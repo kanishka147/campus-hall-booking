@@ -1,0 +1,106 @@
+.admin-halls-wrapper {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.admin-halls-container {
+  width: 600px;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ececec;
+}
+
+.admin-halls-title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+/* ADD HALL */
+.add-hall-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.hall-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d0d0d0;
+  font-size: 15px;
+}
+
+.hall-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.add-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  background: #e7edff;
+  color: #2b4cb8;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #d5e0ff;
+}
+
+/* SECTION */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* HALL LIST */
+.halls-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hall-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafc;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+}
+
+.hall-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* DELETE */
+.delete-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  background: #ffdcdc;
+  color: #b51f1f;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #ffc8c8;
+}
