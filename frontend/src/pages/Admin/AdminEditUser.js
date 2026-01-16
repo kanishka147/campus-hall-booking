@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/AdminEditUser.css";
 import BackButton from "../../components/BackButton";
 
+const BASE_URL = "https://campus-hall-backend.onrender.com/api";
+
 function AdminEditUser() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function AdminEditUser() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/auth/all", {
+    fetch(`${BASE_URL}/auth/all`, {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -25,7 +27,7 @@ function AdminEditUser() {
   }, [id, token]);
 
   const updateUser = async () => {
-    const res = await fetch(`http://localhost:5000/api/auth/${id}`, {
+    const res = await fetch(`${BASE_URL}/auth/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

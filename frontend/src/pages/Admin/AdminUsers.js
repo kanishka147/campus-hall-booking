@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import BASE_URL from "../../api/api";
 import "../../styles/AdminUsers.css";
-import BackButton from "../../components/BackButton";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -8,9 +8,7 @@ function AdminUsers() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!token) return;
-
-    fetch("https://campus-hall-backend.onrender.com/api/auth/all", {
+    fetch(`${BASE_URL}/auth/all`, {
       headers: {
         Authorization: "Bearer " + token
       }
@@ -20,7 +18,7 @@ function AdminUsers() {
   }, [token]);
 
   const deleteUser = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/auth/${id}`, {
+    const res = await fetch(`${BASE_URL}/auth/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token
@@ -34,10 +32,6 @@ function AdminUsers() {
 
   return (
     <div className="admin-page">
-
-      {/* BACK BUTTON */}
-      <BackButton />
-
       <div className="admin-header">
         <h1>Manage Users</h1>
 
@@ -58,18 +52,6 @@ function AdminUsers() {
             </div>
 
             <p className="user-email">{u.email}</p>
-
-            {u.department && (
-              <p className="user-meta">
-                <strong>Department:</strong> {u.department}
-              </p>
-            )}
-
-            {u.position && (
-              <p className="user-meta">
-                <strong>Position:</strong> {u.position}
-              </p>
-            )}
 
             <div className="user-actions">
               <a href={`/admin/users/edit/${u._id}`} className="edit-btn">

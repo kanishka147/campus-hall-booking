@@ -2,61 +2,42 @@ import { useEffect, useState } from "react";
 import "../../styles/AdminHalls.css";
 import BackButton from "../../components/BackButton";
 
+const BASE_URL = "https://campus-hall-backend.onrender.com/api";
+
 function AdminHalls() {
   const [halls, setHalls] = useState([]);
   const [name, setName] = useState("");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("https://campus-hall-backend.onrender.com/api/halls")
-
+    fetch(`${BASE_URL}/halls`)
       .then((res) => res.json())
       .then((data) => setHalls(data));
   }, []);
 
   const addHall = async () => {
-  console.log("Add Hall clicked");
-  console.log("Hall name:", name);
-  console.log("Token:", token);
+    if (!name.trim()) return;
 
-  if (!name.trim()) {
-    alert("Hall name empty");
-    return;
-  }
-
-  try {
-    const res = await fetch(
-      "https://campus-hall-backend.onrender.com/api/halls/create",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        },
-        body: JSON.stringify({ name })
-      }
-    );
-
-    console.log("Response status:", res.status);
+    const res = await fetch(`${BASE_URL}/halls/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ name })
+    });
 
     const data = await res.json();
-    console.log("Response data:", data);
-
-    alert(data.message || "No message from server");
+    alert(data.message);
     window.location.reload();
-
-  } catch (err) {
-    console.error("Add hall error:", err);
-    alert("Request failed");
-  }
-};
+  };
 
   const deleteHall = async (id) => {
-    const res = await fetch(`https://campus-hall-backend.onrender.com/api/halls/${id}`, {
+    const res = await fetch(`${BASE_URL}/halls/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: "Bearer " + token,
-      },
+        Authorization: "Bearer " + token
+      }
     });
 
     const data = await res.json();
@@ -68,12 +49,10 @@ function AdminHalls() {
     <div className="admin-halls-wrapper">
       <div className="admin-halls-container">
 
-        {/* BACK BUTTON */}
         <BackButton label="Admin Dashboard" />
 
         <h2 className="admin-halls-title">Manage Halls</h2>
 
-        {/* ADD HALL */}
         <div className="add-hall-box">
           <input
             type="text"
@@ -87,7 +66,6 @@ function AdminHalls() {
           </button>
         </div>
 
-        {/* EXISTING HALLS */}
         <h3 className="section-title">Existing Halls</h3>
 
         <div className="halls-list">
