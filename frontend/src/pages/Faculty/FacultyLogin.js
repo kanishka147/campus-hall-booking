@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/api";
 import "../../styles/FacultyLogin.css";
 
@@ -6,6 +7,7 @@ function FacultyLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,8 +18,7 @@ function FacultyLogin() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      setMessage("Login successful!");
-      window.location.href = "/faculty/home";
+      navigate("/faculty/home"); // ✅ FIX
     } else {
       setMessage(data.message);
     }
@@ -26,7 +27,6 @@ function FacultyLogin() {
   return (
     <div className="faculty-login-wrapper">
       <div className="faculty-login-card">
-
         <h2 className="faculty-title">Faculty Login</h2>
         <p className="faculty-subtext">Access pending requests & dashboards</p>
 
