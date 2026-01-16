@@ -49,7 +49,7 @@ function AdminHalls() {
     <div className="admin-halls-wrapper">
       <div className="admin-halls-container">
 
-        <BackButton label="Admin Dashboard" />
+        <BackButton label="Admin Dashboard" to="/admin/home" />
 
         <h2 className="admin-halls-title">Manage Halls</h2>
 

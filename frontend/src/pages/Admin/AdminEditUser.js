@@ -49,7 +49,7 @@ function AdminEditUser() {
   return (
     <div className="edit-wrapper">
 
-      <BackButton label="Manage Users" />
+      <BackButton label="Manage Users" to="/admin/users" />
 
       <div className="edit-card">
 

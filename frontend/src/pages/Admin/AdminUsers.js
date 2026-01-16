@@ -38,7 +38,7 @@ function AdminUsers() {
     <div className="admin-page">
 
       {/* 🔙 BACK BUTTON */}
-      <BackButton label="Admin Dashboard" />
+      <BackButton label="Admin Dashboard" to="/admin/home" />
 
       <div className="admin-header">
         <h1>Manage Users</h1>
