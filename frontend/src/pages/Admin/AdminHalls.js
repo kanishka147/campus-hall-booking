@@ -8,7 +8,8 @@ function AdminHalls() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/halls")
+    fetch("https://campus-hall-backend.onrender.com/api/halls")
+
       .then((res) => res.json())
       .then((data) => setHalls(data));
   }, []);
@@ -16,7 +17,7 @@ function AdminHalls() {
   const addHall = async () => {
     if (!name.trim()) return;
 
-    const res = await fetch("http://localhost:5000/api/halls/create", {
+    const res = await fetch("https://campus-hall-backend.onrender.com/api/halls/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,7 @@ function AdminHalls() {
   };
 
   const deleteHall = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/halls/${id}`, {
+    const res = await fetch(`https://campus-hall-backend.onrender.com/api/halls/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
