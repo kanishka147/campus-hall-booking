@@ -14,25 +14,33 @@ function AdminAddUser() {
   const token = localStorage.getItem("token");
 
   const createUser = async () => {
-    const res = await fetch("http://localhost:5000/api/auth/create-user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        role,
-        department,
-        position
-      })
-    });
+  try {
+    const res = await fetch(
+      "https://campus-hall-backend.onrender.com/api/auth/create-user",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          role,
+          department,
+          position
+        })
+      }
+    );
 
     const data = await res.json();
     setMessage(data.message);
-  };
+  } catch (error) {
+    console.error("Create user error:", error);
+    setMessage("Server error. Try again.");
+  }
+};
 
   return (
     <div className="add-user-wrapper">
