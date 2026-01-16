@@ -10,7 +10,7 @@ function AdminUsers() {
   useEffect(() => {
     if (!token) return;
 
-    fetch("http://localhost:5000/api/auth/all", {
+    fetch("https://campus-hall-backend.onrender.com/api/auth/all", {
       headers: {
         Authorization: "Bearer " + token
       }
