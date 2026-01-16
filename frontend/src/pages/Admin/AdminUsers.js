@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import BASE_URL from "../../api/api";
 import "../../styles/AdminUsers.css";
+import BackButton from "../../components/BackButton";
+
+const BASE_URL = "https://campus-hall-backend.onrender.com/api";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -8,6 +10,8 @@ function AdminUsers() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    if (!token) return;
+
     fetch(`${BASE_URL}/auth/all`, {
       headers: {
         Authorization: "Bearer " + token
@@ -32,6 +36,10 @@ function AdminUsers() {
 
   return (
     <div className="admin-page">
+
+      {/* 🔙 BACK BUTTON */}
+      <BackButton label="Admin Dashboard" />
+
       <div className="admin-header">
         <h1>Manage Users</h1>
 
@@ -52,6 +60,18 @@ function AdminUsers() {
             </div>
 
             <p className="user-email">{u.email}</p>
+
+            {u.department && (
+              <p className="user-meta">
+                <strong>Department:</strong> {u.department}
+              </p>
+            )}
+
+            {u.position && (
+              <p className="user-meta">
+                <strong>Position:</strong> {u.position}
+              </p>
+            )}
 
             <div className="user-actions">
               <a href={`/admin/users/edit/${u._id}`} className="edit-btn">
