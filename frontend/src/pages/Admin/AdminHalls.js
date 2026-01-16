@@ -15,21 +15,41 @@ function AdminHalls() {
   }, []);
 
   const addHall = async () => {
-    if (!name.trim()) return;
+  console.log("Add Hall clicked");
+  console.log("Hall name:", name);
+  console.log("Token:", token);
 
-    const res = await fetch("https://campus-hall-backend.onrender.com/api/halls/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({ name }),
-    });
+  if (!name.trim()) {
+    alert("Hall name empty");
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      "https://campus-hall-backend.onrender.com/api/halls/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        },
+        body: JSON.stringify({ name })
+      }
+    );
+
+    console.log("Response status:", res.status);
 
     const data = await res.json();
-    alert(data.message);
+    console.log("Response data:", data);
+
+    alert(data.message || "No message from server");
     window.location.reload();
-  };
+
+  } catch (err) {
+    console.error("Add hall error:", err);
+    alert("Request failed");
+  }
+};
 
   const deleteHall = async (id) => {
     const res = await fetch(`https://campus-hall-backend.onrender.com/api/halls/${id}`, {
