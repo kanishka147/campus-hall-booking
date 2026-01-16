@@ -24,10 +24,24 @@ router.post('/login', async (req, res) => {
       }
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
-    if (!passwordMatch) {
-      return res.status(400).json({ message: "Invalid password" });
-    }
+    if (!user.passwordHash) {
+  return res.status(500).json({
+    message: "Password not set for this user. Please contact admin."
+  });
+}
+
+if (!user.passwordHash) {
+  return res.status(500).json({
+    message: "Password not set for this user. Please contact admin."
+  });
+}
+
+const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+if (!passwordMatch) {
+  return res.status(400).json({ message: "Invalid password" });
+}
+
+
 
     const token = jwt.sign(
       {
