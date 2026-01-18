@@ -21,11 +21,15 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/halls', hallRoutes);
 // ================= SERVE FRONTEND =================
-app.use(express.static(path.join(__dirname, "client/build")));
+const clientPath = path.join(__dirname, "client", "build");
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+app.use(express.static(clientPath));
+
+// React router fallback (Express 5 safe)
+app.get(/^(?!\/api).*/, (req, res) => {
+  res.sendFile(path.join(clientPath, "index.html"));
 });
+
 
 
 // Test route
