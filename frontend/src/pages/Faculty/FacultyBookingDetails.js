@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/FacultyBookingDetails.css";
 import BackButton from "../../components/BackButton";
 
+const API_BASE = "https://campus-hall-backend.onrender.com/api";
+
 function FacultyBookingDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,20 +14,24 @@ function FacultyBookingDetails() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/api/bookings/${id}`, {
+    fetch(`${API_BASE}/bookings/${id}`, {
       headers: {
         Authorization: "Bearer " + token
       }
     })
       .then(res => res.json())
-      .then(data => setBooking(data));
+      .then(data => setBooking(data))
+      .catch(err => {
+        console.error("Error fetching booking:", err);
+        setBooking(null);
+      });
   }, [id]);
 
   const handleAction = async (action) => {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-      `http://localhost:5000/api/bookings/${id}/${action}`,
+      `${API_BASE}/bookings/${id}/${action}`,
       {
         method: "POST",
         headers: {

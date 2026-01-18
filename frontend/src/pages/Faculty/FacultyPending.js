@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/FacultyPending.css";
 import BackButton from "../../components/BackButton";
 
+const API_BASE = "https://campus-hall-backend.onrender.com/api";
+
 function FacultyPending() {
   const [requests, setRequests] = useState([]);
   const navigate = useNavigate();
@@ -10,13 +12,17 @@ function FacultyPending() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:5000/api/bookings/pending", {
+    fetch(`${API_BASE}/bookings/pending`, {
       headers: {
         Authorization: "Bearer " + token
       }
     })
       .then(res => res.json())
-      .then(data => setRequests(data));
+      .then(data => setRequests(data))
+      .catch(err => {
+        console.error("Error fetching pending bookings:", err);
+        setRequests([]);
+      });
   }, []);
 
   return (
