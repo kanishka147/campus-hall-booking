@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import "../../styles/AdminBookings.css";
 import BackButton from "../../components/BackButton";
 
+const API_BASE = "https://campus-hall-backend.onrender.com/api";
+
 function AdminBookings() {
   const [bookings, setBookings] = useState([]);
   const [halls, setHalls] = useState([]);
@@ -13,13 +15,18 @@ function AdminBookings() {
 
   const token = localStorage.getItem("token");
 
+  // ✅ Fetch halls
   useEffect(() => {
-    fetch("http://localhost:5000/api/halls")
+    fetch(`${API_BASE}/halls`)
       .then((res) => res.json())
-      .then((data) => setHalls(data));
+      .then((data) => setHalls(data))
+      .catch(() => setHalls([]));
   }, []);
 
+  // ✅ Fetch bookings with filters
   const fetchBookings = useCallback(() => {
+    if (!token) return;
+
     const query = new URLSearchParams({
       hall: filterHall,
       status: filterStatus,
@@ -27,13 +34,14 @@ function AdminBookings() {
       sort: sortOrder,
     });
 
-    fetch(`http://localhost:5000/api/bookings?${query.toString()}`, {
+    fetch(`${API_BASE}/bookings?${query.toString()}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
     })
       .then((res) => res.json())
-      .then((data) => setBookings(data));
+      .then((data) => setBookings(data))
+      .catch(() => setBookings([]));
   }, [filterHall, filterStatus, filterDate, sortOrder, token]);
 
   useEffect(() => {
