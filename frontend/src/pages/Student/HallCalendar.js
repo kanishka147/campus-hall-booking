@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import "../../styles/HallCalendar.css";
 import BackButton from "../../components/BackButton";
 
+const API_BASE = "https://campus-hall-backend.onrender.com/api";
+
 function HallCalendar() {
   const { hallId } = useParams();
   const [hall, setHall] = useState(null);
@@ -15,25 +17,30 @@ function HallCalendar() {
   const [message, setMessage] = useState("");
   const [bookingUpdated, setBookingUpdated] = useState(false);
 
+  // ✅ Fetch hall details
   useEffect(() => {
-    fetch(`http://localhost:5000/api/halls`)
+    fetch(`${API_BASE}/halls`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((h) => h._id === hallId);
         setHall(found);
-      });
+      })
+      .catch((err) => console.error("Hall fetch error:", err));
   }, [hallId]);
 
+  // ✅ Fetch bookings for this hall
   useEffect(() => {
-    fetch(`http://localhost:5000/api/bookings/hall/${hallId}`)
+    fetch(`${API_BASE}/bookings/hall/${hallId}`)
       .then((res) => res.json())
-      .then((data) => setBookings(data));
+      .then((data) => setBookings(data))
+      .catch((err) => console.error("Bookings fetch error:", err));
   }, [hallId, bookingUpdated]);
 
+  // ✅ Create booking
   const sendRequest = async () => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/bookings/create", {
+    const response = await fetch(`${API_BASE}/bookings/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,9 +88,15 @@ function HallCalendar() {
           ></textarea>
         </div>
 
-        <button className="send-btn" onClick={sendRequest}>Send Request</button>
+        <button className="send-btn" onClick={sendRequest}>
+          Send Request
+        </button>
 
-        <p style={{ marginTop: "15px", color: "red", fontWeight: 600 }}>{message}</p>
+        {message && (
+          <p style={{ marginTop: "15px", color: "red", fontWeight: 600 }}>
+            {message}
+          </p>
+        )}
 
         <h3 className="section-title">Existing Bookings</h3>
 
@@ -94,19 +107,22 @@ function HallCalendar() {
             bookings.map((b) => (
               <div key={b._id} className="booking-card">
                 <span>{b.date} | {b.startTime} - {b.endTime}</span>
-                <span className={
-                  b.status === "approved"
-                    ? "status status-approved"
-                    : b.status === "rejected"
-                    ? "status status-rejected"
-                    : "status status-pending"
-                }>
+                <span
+                  className={
+                    b.status === "approved"
+                      ? "status status-approved"
+                      : b.status === "rejected"
+                      ? "status status-rejected"
+                      : "status status-pending"
+                  }
+                >
                   {b.status.charAt(0).toUpperCase() + b.status.slice(1)}
                 </span>
               </div>
             ))
           )}
         </div>
+
       </div>
     </div>
   );
